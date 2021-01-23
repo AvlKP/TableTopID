@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=B612&display=swap');
+
+html, body {
+    margin: 0;
+    padding: 0;
+    font: 16px 'B612', sans-serif;
+}
+
+.navbar {
+    display: flex;
+    width: 100vw;
+    height: 57px;
+    align-content: center;
+    border-bottom: 2px solid black;
+}
+
+.navbar>* {
+    margin: 16px;
+}
+
+.navbar>h5 {
+    flex: 1;
+    font-size: 1.2rem;
+}
+
+.hero {
+    height: calc(100vh - 57px);
+    background-color: rgb(200, 200, 200);
+}
+
+.hero>div {
+    display: flex;
+    flex-flow: column;
+    position: relative;
+    left: 5.3vw;
+    top: 36.25vh;
+    max-width: 70vw;
+}
+
+.hero button {
+    display: flex;
+    width: 32.5vw;
+    height: 7.5vh;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2em;
+    color: white;
+    background-color: black;
+    border-radius: 5px;
+    border: none;
+    font-weight: 500;
+}
+
+.hero>div>* {
+    margin: 0;
+    margin-bottom: 1rem;
+}
+
+.featuredItems {
+    width: 100vw;
+    display: flex;
+    flex-flow: column;
+}
+
+.featuredItems>h3 {
+    margin: 39px auto;
+}
+
+.featuredItem {
+    height: 28.125vh;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.featuredImage {
+    width: 15.625vh;
+    height: 15.625vh;
+    background-color: rgb(189, 189, 189);
+    flex: 0 0 15.625vh;
+}
+
+.featuredText {
+    flex: 0 0 50vw;
+}
+
+#item1, #item3 {
+    background-color: rgb(245, 245, 245);
+}
+
+#item2 {
+    background-color: rgb(224, 224, 224);
+    flex-flow: row-reverse;
+}
+
+.about {
+    display: flex;
+    flex-flow: row-reverse;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.aboutImage {
+    width: 15.625vh;
+    height: 15.625vh;
+    background-color: rgb(189, 189, 189);
+    flex: 0 0 15.625vh;
+    border-radius: 50%;
+}
+
+.aboutText {
+    flex: 0 0 50vw;
+}
