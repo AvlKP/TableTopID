@@ -1,0 +1,9 @@
+{
+  "name": "TabletopID",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/AvlKP/TabletopID.git",
+  "author": "Avila Khadhibyan <avlkp.dev@gmail.com>",
+  "license": "MIT",
+  "private": true
+}
