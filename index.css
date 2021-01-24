@@ -6,9 +6,23 @@ html, body {
     font: 16px 'B612', sans-serif;
 }
 
+.image {
+    width: 15.625vh;
+    height: 15.625vh;
+    flex: 0 0 15.625vh;
+}
+
+.flex-col {
+    display: flex;
+    flex-flow: column;
+}
+
+.placeholder {
+    background-color: rgb(189, 189, 189);
+}
+
 .navbar {
     display: flex;
-    width: 100vw;
     height: 57px;
     align-content: center;
     border-bottom: 2px solid black;
@@ -25,12 +39,9 @@ html, body {
 
 .hero {
     height: calc(100vh - 57px);
-    background-color: rgb(200, 200, 200);
 }
 
 .hero>div {
-    display: flex;
-    flex-flow: column;
     position: relative;
     left: 5.3vw;
     top: 36.25vh;
@@ -56,31 +67,18 @@ html, body {
     margin-bottom: 1rem;
 }
 
-.featuredItems {
-    width: 100vw;
-    display: flex;
-    flex-flow: column;
-}
-
-.featuredItems>h3 {
+.featured-items>h3 {
     margin: 39px auto;
 }
 
-.featuredItem {
+.featured-item {
     min-height: 28.125vh;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
 }
 
-.featuredImage {
-    width: 15.625vh;
-    height: 15.625vh;
-    background-color: rgb(189, 189, 189);
-    flex: 0 0 15.625vh;
-}
-
-.featuredText {
+.featured-text {
     flex: 0 0 50vw;
 }
 
@@ -100,26 +98,20 @@ html, body {
     align-items: center;
 }
 
-.aboutImage {
-    width: 15.625vh;
-    height: 15.625vh;
-    background-color: rgb(189, 189, 189);
-    flex: 0 0 15.625vh;
+.about-image {
     border-radius: 50%;
 }
 
-.aboutText {
+.about-text {
     flex: 0 0 50vw;
 }
 
 .partners {
-    display: flex;
-    flex-flow: column;
     align-items: center;
     min-height: 100vw;
 }
 
-.partnersImages {
+.partners-images {
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
@@ -128,15 +120,12 @@ html, body {
     min-height: 68vw;
 }
 
-.partnersImages>div {
-    background-color: rgb(189, 189, 189);
+.partners-images>div {
     min-height: 28vw;
     min-width: 28vw;
 }
 
 footer {
-    display: flex;
-    flex-flow: column;
     align-items: center;
     height: 137px;
     border-top: 2px solid black;
