@@ -6,6 +6,18 @@ html, body {
     font: 16px 'B612', sans-serif;
 }
 
+a {
+    color: black;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+.desktop {
+    display: none;
+}
+
 .image {
     width: 15.625vh;
     height: 15.625vh;
@@ -123,6 +135,7 @@ html, body {
 .partners-images>div {
     min-height: 28vw;
     min-width: 28vw;
+    margin-bottom: 40px;
 }
 
 footer {
@@ -161,6 +174,128 @@ footer>h6::before {
     align-items: center;
 }
 
-@media only screen and (min-width: 992px) {
+@media only screen and (min-width: 1280px) {
+    .navbar {
+        padding: 0 10vw;
+    }
 
+    .partners-images {
+        justify-content: space-between;
+        align-content: space-between;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    body {
+        font-size: 18px;
+    }
+
+    .mobile {
+        display: none;
+    }
+
+    .desktop {
+        display: flex;
+    }
+
+    .navbar>h5 {
+        flex: 0;
+        margin-right: 4vw;
+        font-size: 1.2em;
+    }
+
+    .desktop-nav {
+        flex: 1;
+        align-items: center;
+    }
+
+    .desktop-nav>div + div {
+        margin-left: 4vw;
+    }
+
+    .account>* + * {
+        margin-left: 4px;
+    }
+
+    .search {
+        margin: auto;
+    }
+
+    #search-box {
+        margin-right: 0;
+        border: 1px solid black;
+        border-radius: 10px;
+        padding: 4px 12px;
+        width: 15vw;
+        font-size: 18px;
+    }    
+
+    .image {
+        height: 200px;
+        width: 200px;
+        flex: 0 0 200px;
+        margin: 32px;
+    }
+
+    .featured-item {
+        padding: 0 20vw;
+        display: grid;
+        grid-template-columns: 1fr 488px 1fr;
+        grid-template-rows: auto;
+    }
+
+    .featured-item>.featured-image {
+        align-self: center;
+        justify-self: center;
+    }
+
+    #item2>.featured-image {
+        grid-column: 3;
+        grid-row: 1;
+    }
+    
+    #item2>.featured-text {
+        grid-column: 2;
+        grid-row: 1;
+    }
+
+    .about {
+        display: grid;
+        grid-template-columns: 1fr 488px 1fr;
+        padding: 0 20vw;
+    }
+
+    .about-image {
+        grid-row: 1;
+        grid-column: 3;
+        justify-self: center;
+        align-self: center;
+    }
+
+    .about-text {
+        grid-row: 1;
+        grid-column: 1 / 3;
+    }
+
+    .partners {
+        min-height: 0;
+    }
+
+    .partners-images {
+        min-height: 0;
+        justify-content: space-evenly;
+        align-content: space-evenly;
+    }
+
+    .partners-images>div {
+        max-height: 10vw;
+        max-width: 10vw;
+        min-height: 192px;
+        min-width: 192px;
+        margin: 40px;
+    }
+
+    .media {
+        width: 10vw;
+    }
 }
