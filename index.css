@@ -49,6 +49,8 @@ a:link {
     font-size: 1.2rem;
 }
 
+
+
 .hero {
     height: calc(100vh - 57px);
 }
@@ -205,6 +207,8 @@ footer>h6::before {
     }
 
     .desktop-nav {
+        display: flex;
+        flex-flow: row;
         flex: 1;
         align-items: center;
     }
