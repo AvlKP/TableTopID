@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=B612&display=swap');
+
+html, body {
+    margin: 0;
+    padding: 0;
+    font: 16px 'B612', sans-serif;
+}
+
+a {
+    color: black;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+@media only screen and (min-width: 992px) {
+    body {
+        font-size: 18px;
+    }
+}

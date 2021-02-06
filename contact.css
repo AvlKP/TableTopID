@@ -1,0 +1,29 @@
+main {
+    min-height: calc(100vh - 59px - 139px);
+    margin: 20px 10%;;
+}
+
+fieldset {
+    display: flex;
+    flex-flow: column;
+}
+
+fieldset>* {
+    font-size: 1.2em;
+}
+
+textarea {
+    resize: none;
+}
+
+button {
+    background-color: black;
+    color: white;
+    border: 0;
+    height: 48px;
+    width: 10%;
+}
+
+label + * {
+    margin-bottom: 10px;
+}
