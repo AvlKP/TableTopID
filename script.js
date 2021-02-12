@@ -8,18 +8,33 @@ class Navbar extends HTMLElement {
 		const mediaQuery = window.matchMedia("(min-width: 992px)");
 
 		let menu = this.shadowRoot.querySelector("#menu");
+		let menuButton = this.shadowRoot.querySelector("#menu-icon");
 		let navbar = this.shadowRoot.querySelector("#navbar");
+		let searchBar = this.shadowRoot.querySelector(".search");
+		let searchButton = this.shadowRoot.querySelector("#search-button");
+		let title = this.shadowRoot.querySelector("#navbar>h5");
+
+		function activateSearch() {
+			searchBar.classList.add("active-search");
+			menuButton.classList.add("active-search");
+			title.classList.add("active-search");
+		}
+
+		function collapseSearch() {
+			searchBar.classList.remove("active-search");
+			menuButton.classList.remove("active-search");
+			title.classList.remove("active-search");
+		}
 
 		if (mediaQuery.matches) {
 			menu.classList.add("desktop-nav");
 		} else {
 			menu.classList.remove("desktop-nav");
 			menu.classList.add("mobile-nav");
-			this.shadowRoot
-				.querySelector("#menu-icon")
-				.addEventListener("click", () => {
-					navbar.classList.add("active");
-				});
+			menuButton.addEventListener("click", () => {
+				navbar.classList.add("active");
+			});
+			searchButton.addEventListener("click", activateSearch);
 		}
 
 		let resizeTimer;
@@ -33,16 +48,24 @@ class Navbar extends HTMLElement {
 			if (mediaQuery.matches) {
 				menu.classList.remove("mobile-nav");
 				menu.classList.add("desktop-nav");
+
+				if (searchBar.classList.contains("active-search")) {
+					collapseSearch();
+					searchButton.removeEventListener("click", activateSearch);
+				}
 			} else {
 				menu.classList.remove("desktop-nav");
 				menu.classList.add("mobile-nav");
-				this.shadowRoot
-					.querySelector("#menu-icon")
-					.addEventListener("click", () => {
-						navbar.classList.add("active");
-					});
+				menuButton.addEventListener("click", () => {
+					navbar.classList.add("active");
+				});
+				searchButton.addEventListener("click", activateSearch);
 			}
 		});
+
+		this.shadowRoot
+			.querySelector(".search>svg")
+			.addEventListener("click", collapseSearch);
 
 		this.shadowRoot
 			.querySelector("#background")
@@ -63,6 +86,10 @@ class Footer extends HTMLElement {
 Navbar.template = document.createElement("template");
 Navbar.template.innerHTML = `
 <style>
+    svg {
+        min-width: 24px;
+    }
+
     .resize-animation-stopper * {
         animation: none !important;
         transition: none !important;
@@ -70,10 +97,27 @@ Navbar.template.innerHTML = `
 
     a {
         color: black;
+        position: relative;
     }
 
     a:link {
         text-decoration: none;
+    }
+
+    .desktop-nav a::after {
+        content: '';
+        position: absolute;
+        bottom: -8px;
+        left: 50%;
+        width: 0;
+        height: 2px;
+        background-color: black;
+        transition: all 0.3s ease;
+    }
+    
+    .desktop-nav a:hover::after {
+        width: 100%;
+        left: 0;
     }
 
     nav {
@@ -108,6 +152,10 @@ Navbar.template.innerHTML = `
     }
 
     .search, .account {
+        display: none;
+    }
+
+    .search > svg {
         display: none;
     }
 
@@ -146,6 +194,37 @@ Navbar.template.innerHTML = `
         background-color: rgba(0, 0, 0, 0.7);
     }
 
+    .search.active-search:not(.desktop-nav) {
+        display: flex;
+        margin: auto;
+        flex: 1;
+        align-items: center;
+    }
+
+    .search.active-search:not(.desktop-nav) > #search-box {
+        flex: 1;
+        box-sizing: border-box;
+        height: 34px;
+    }
+
+    .search.active-search:not(.desktop-nav) > svg {
+        display: inline-block;
+        margin: 16px;
+    }
+
+    h5.active-search:not(.desktop-nav), #menu-icon.active-search:not(.desktop-nav) {
+        display: none;
+    }
+
+    #search-box {
+        margin-right: 0;
+        border: 1px solid black;
+        border-radius: 10px;
+        padding: 4px 12px;
+        width: 15vw;
+        font-size: 18px;
+    }
+
     .account>* + * {
         margin-left: 4px;
     }
@@ -169,15 +248,6 @@ Navbar.template.innerHTML = `
             display: block;
             margin: auto;
         }
-
-        #search-box {
-            margin-right: 0;
-            border: 1px solid black;
-            border-radius: 10px;
-            padding: 4px 12px;
-            width: 15vw;
-            font-size: 18px;
-        }    
     } 
 
     @media only screen and (min-width: 1280px) {
@@ -194,15 +264,18 @@ Navbar.template.innerHTML = `
             <path d="M24 6h-24v-4h24v4zm0 4h-24v4h24v-4zm0 8h-24v4h24v-4z" />
         </svg>
     </div>
-    <h5>TableTopID</h5>
+    <h5><a href="index.html">TableTopID</a></h5>
     <div id="menu">
         <div><a href="index.html">Beranda</a></div>
-        <div><a href="#">Katalog</a></div>
+        <div><a href="catalogue.html">Katalog</a></div>
         <div><a href="contact.html">Kontak</a></div>
         <div><a href="about.html">Tentang</a></div>
     </div>
     <div class="search">
-        <input type="text" id="search-box"></div>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z"/></svg>
+        <input type="text" id="search-box">
+    </div>
+    <div id="search-button">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
             <path
                 d="M23.809 21.646l-6.205-6.205c1.167-1.605 1.857-3.579 1.857-5.711 0-5.365-4.365-9.73-9.731-9.73-5.365 0-9.73 4.365-9.73 9.73 0 5.366 4.365 9.73 9.73 9.73 2.034 0 3.923-.627 5.487-1.698l6.238 6.238 2.354-2.354zm-20.955-11.916c0-3.792 3.085-6.877 6.877-6.877s6.877 3.085 6.877 6.877-3.085 6.877-6.877 6.877c-3.793 0-6.877-3.085-6.877-6.877z" />

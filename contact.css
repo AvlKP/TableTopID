@@ -1,6 +1,12 @@
+body {
+    display: flex;
+    flex-flow: column;
+    height: 100vh;
+}
+
 main {
-    min-height: calc(100vh - 59px - 139px);
     margin: 20px 10%;;
+    flex: 1;
 }
 
 fieldset {
@@ -14,6 +20,7 @@ fieldset>* {
 
 textarea {
     resize: none;
+    padding: 2px 8px;
 }
 
 button {
@@ -21,9 +28,38 @@ button {
     color: white;
     border: 0;
     height: 48px;
-    width: 10%;
+    width: 134px;
 }
 
 label + * {
     margin-bottom: 10px;
+}
+
+@media only screen and (max-width: 992px) {
+    main {
+        width: 100%;
+        margin: 20px 0%;
+        display: flex;
+        justify-content: center;
+    }
+
+    form {
+        min-width: min-content;
+        width: 90%;
+    }
+
+    button {
+        width: auto;
+    }
+}
+
+@media only screen and (max-width: 460px) {
+    fieldset {
+        align-items: center;
+    }
+
+    fieldset>*:not(legend) {
+        box-sizing: border-box;
+        width: 100%;
+    }
 }
